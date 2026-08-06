@@ -74,6 +74,11 @@ Core/Src/system_stm32h7xx.c \
 Core/Src/sysmem.c \
 Core/Src/syscalls.c  
 
+MY_SOURCES = \
+src/my_main.c
+
+C_SOURCES += $(MY_SOURCES)
+
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32h7b0xx.s
@@ -140,6 +145,14 @@ C_INCLUDES =  \
 -IDrivers/CMSIS/Device/ST/STM32H7xx/Include \
 -IDrivers/CMSIS/Include
 
+MY_INCLUDES = \
+-Isrc \
+-Isrc/app \
+-Isrc/common \
+-Isrc/drivers \
+-Isrc/test
+
+C_INCLUDES += $(MY_INCLUDES)
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
@@ -213,5 +226,23 @@ clean:
 # dependencies
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
+
+.PHONY: clean cppcheck
+
+#######################################
+# static analysis
+#######################################
+CPPCHECK = cppcheck
+
+cppcheck:
+	@$(CPPCHECK) \
+	--quiet \
+	--enable=all \
+	--error-exitcode=1 \
+	--inline-suppr \
+	$(C_DEFS) \
+	$(C_INCLUDES) \
+	$(MY_SOURCES)
+
 
 # *** EOF ***
