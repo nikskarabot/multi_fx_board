@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "make",
             "args": [
-                "GCC_PATH=${userHome}/dev/tools/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin",
+                "GCC_PATH=${config:stm32.gccPath}",
                 "-j$(nproc)"
             ],
             "group": {
