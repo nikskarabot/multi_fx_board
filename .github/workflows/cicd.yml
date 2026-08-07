@@ -1,0 +1,13 @@
+
+on: [push]
+
+jobs:
+  build_and_static_analysis:
+    runs-on: ubuntu-latest
+    container:
+      image: nikskarabot/stm-arm-gcc:13.2.rel1
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - run: make
+      - run: cppcheck
