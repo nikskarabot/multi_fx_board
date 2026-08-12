@@ -227,7 +227,7 @@ clean:
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
 
-.PHONY: clean cppcheck
+.PHONY: clean cppcheck format
 
 #######################################
 # static analysis
@@ -243,6 +243,14 @@ cppcheck:
 	$(C_DEFS) \
 	$(C_INCLUDES) \
 	$(MY_SOURCES)
+
+#######################################
+# formatting
+#######################################
+FORMAT = clang-format-12
+
+format:
+	@$(FORMAT) -i $(MY_SOURCES)
 
 
 # *** EOF ***

@@ -1,0 +1,24 @@
+{
+    "name": "ARM GCC Toolchain Environment",
+    "build": {
+        "dockerfile": "../tools/dockerfile"
+    },
+    // 1. Tell VS Code to automatically fix the UID/GID to match your local machine
+    "updateRemoteUserUID": true,
+    "remoteUser": "ubuntu",
+    
+    // 2. Mount your local SSH keys and git config automatically
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {}
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                //"marus25.cortex-debug",
+                //"ms-vscode.cpptools"
+            ]
+        }
+    }
+}
+
