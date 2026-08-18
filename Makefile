@@ -74,8 +74,15 @@ Core/Src/system_stm32h7xx.c \
 Core/Src/sysmem.c \
 Core/Src/syscalls.c  
 
+MY_SOURCES_WITH_HEADERS = \
+	src/my_main.c
+
 MY_SOURCES = \
-src/my_main.c
+	$(MY_SOURCES_WITH_HEADERS)
+
+MY_HEADERS = \
+	$(MY_SOURCES_WITH_HEADERS:.c=.h) \
+	src/common/defines.h
 
 C_SOURCES += $(MY_SOURCES)
 
@@ -250,7 +257,7 @@ cppcheck:
 FORMAT = clang-format-12
 
 format:
-	@$(FORMAT) -i $(MY_SOURCES)
+	@$(FORMAT) -i $(MY_SOURCES) $(MY_HEADERS)
 
 
 # *** EOF ***
