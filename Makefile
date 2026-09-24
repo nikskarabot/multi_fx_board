@@ -234,7 +234,7 @@ clean:
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
 
-.PHONY: clean cppcheck format
+.PHONY: clean cppcheck format flash
 
 #######################################
 # static analysis
@@ -258,6 +258,12 @@ FORMAT = clang-format-12
 
 format:
 	@$(FORMAT) -i $(MY_SOURCES) $(MY_HEADERS)
+
+flash: all
+	openocd \
+		-f interface/stlink.cfg \
+		-f target/stm32h7x.cfg \
+		-c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 
 
 # *** EOF ***
