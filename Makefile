@@ -254,7 +254,7 @@ cppcheck:
 #######################################
 # formatting
 #######################################
-FORMAT = clang-format-12
+FORMAT = clang-format-21
 
 format:
 	@$(FORMAT) -i $(MY_SOURCES) $(MY_HEADERS)
