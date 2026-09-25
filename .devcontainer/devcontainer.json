@@ -5,7 +5,7 @@
         "dockerfile": "../tools/dockerfile"
     },
     
-    // 1. Tell VS Code to automatically fix the UID/GID to match your local machine
+    // tells code editor to auto fix the UID/GID to match your local machine
     "updateRemoteUserUID": true,
     "remoteUser": "ubuntu",
 
