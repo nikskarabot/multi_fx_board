@@ -6,9 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: nikskarabot/multi_fx_board-dev_env:25.9.2026
+      options: --user root
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
+      # This is needed due to https://nvd.nist.gov/vuln/detail/cve-2022-24765
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - run: pwd && echo "$GITHUB_WORKSPACE" && git rev-parse --show-toplevel
       - run: make format && git diff --quiet
       - run: make cppcheck
       - run: make
