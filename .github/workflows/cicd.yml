@@ -5,7 +5,7 @@ jobs:
   build_and_static_analysis:
     runs-on: ubuntu-latest
     container:
-      image: nikskarabot/stm-arm-gcc:13.2.rel1
+      image: nikskarabot/multi_fx_board-dev_env:25.9.2026
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
