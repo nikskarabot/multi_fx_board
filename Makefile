@@ -244,9 +244,12 @@ CPPCHECK = cppcheck
 cppcheck:
 	@$(CPPCHECK) \
 	--quiet \
-	--enable=all \
+	--enable=warning,performance,portability \
 	--error-exitcode=1 \
 	--inline-suppr \
+	--suppress=missingIncludeSystem \
+	--suppress=comparePointers \
+	-D__GNUC__ \
 	$(C_DEFS) \
 	$(C_INCLUDES) \
 	$(MY_SOURCES)

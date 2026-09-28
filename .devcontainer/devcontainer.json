@@ -11,6 +11,14 @@
 
     "runArgs": [
         "--device=/dev/bus/usb:/dev/bus/usb"
-    ]
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "marus25.cortex-debug",
+                "ms-vscode.cpptools-extension-pack"
+            ]
+        }
+    }
 }
 
