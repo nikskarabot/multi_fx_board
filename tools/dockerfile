@@ -15,6 +15,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     xz-utils \
     openocd \
     usbutils \
+    bear \
     && rm -rf /var/lib/apt/lists/*
 
 # Download the toolchain and unzip it into /opt/toolchain/
