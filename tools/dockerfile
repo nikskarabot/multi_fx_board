@@ -16,6 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     openocd \
     usbutils \
     bear \
+    doxygen \
     && rm -rf /var/lib/apt/lists/*
 
 # Download the toolchain and unzip it into /opt/toolchain/
