@@ -1,23 +1,28 @@
 #include "my_main.h"
-#include <main.h>
+
+#include "main.h"
+#include "led.h"
+#include "defines.h"
+#include "assert_handler.h"
+
+// TO DO: Move to test file
+static void test_assert(void) {
+    ASSERT(0);
+}
 
 void led_sequence(void) {
+
     static int i = 0;
 
-    Led_t current_led = leds[i];
-
-    HAL_GPIO_WritePin(current_led.port, current_led.pin, GPIO_PIN_SET);
+    led_write(i, HIGH);
     HAL_Delay(500);
-    HAL_GPIO_WritePin(current_led.port, current_led.pin, GPIO_PIN_RESET);
+    led_write(i, LOW);
 
     i++;
     i %= 10;
 }
 
 int my_main(void) {
-
-    int i = 0;
-
     while (1) {
         led_sequence();
     }

@@ -75,7 +75,9 @@ Core/Src/sysmem.c \
 Core/Src/syscalls.c  
 
 MY_SOURCES_WITH_HEADERS = \
-	src/my_main.c
+	src/my_main.c \
+	src/common/assert_handler.c \
+	src/drivers/led.c
 
 MY_SOURCES = \
 	$(MY_SOURCES_WITH_HEADERS)
@@ -162,9 +164,9 @@ MY_INCLUDES = \
 C_INCLUDES += $(MY_INCLUDES)
 
 # compile gcc flags
-ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -Wextra -fdata-sections -ffunction-sections
 
-CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -Wextra -fdata-sections -ffunction-sections
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -gdwarf-2
