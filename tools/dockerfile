@@ -17,6 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     usbutils \
     bear \
     doxygen \
+    graphviz \
     && rm -rf /var/lib/apt/lists/*
 
 # Download the toolchain and unzip it into /opt/toolchain/

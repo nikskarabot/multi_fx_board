@@ -270,5 +270,8 @@ flash: all
 		-f target/stm32h7x.cfg \
 		-c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 
+docs: all
+	doxygen Doxyfile
+
 
 # *** EOF ***
